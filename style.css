@@ -366,7 +366,7 @@ body {
 /* Event title */
 .event-overlay h2 {
     font-family: 'Great Vibes', cursive;
-    font-size: 48px;
+    font-size: 40px;
     margin-bottom: 12px;
 
     background: linear-gradient(
@@ -413,6 +413,22 @@ body {
     height: 100%;
     text-decoration: none;
 }
+.venue .event-overlay {
+    width: 87%;
+    height:80%;
+    margin: 0 auto;
+    max-width: 95%;
+}
+
+/* Smaller text for Wedding Venue */
+.venue .event-overlay h2 {
+    font-size: 30px;
+}
+
+.venue .event-overlay .event-time {
+    font-size: 10px;
+    white-space: nowrap;
+}
 
 .tap-venue {
     width: 100%;              /* take full width */
@@ -427,6 +443,7 @@ body {
 
     animation: fadeBlink 2s ease-in-out infinite;
 }
+
 /* fade animation */
 @keyframes fadeBlink {
     0%   { opacity: 0.4; }
@@ -436,7 +453,7 @@ body {
 
 @media (max-width: 360px) {
     .venue .event-overlay h2 {
-        font-size: 40px;
+        font-size: 20px;
     }
 }
 
