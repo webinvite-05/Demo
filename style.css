@@ -19,26 +19,29 @@
 
 /* 4:3 PAGE WRAPPER */
 .page-43 {
-    width: 100%;
-    max-width: 400px;          /* controls card width */
-    aspect-ratio: 4 / 3;      /* 🔑 THE MAGIC */
-    
+    width: 90%;
+    max-width: 420px;   /* mobile size */
+    aspect-ratio: 4 / 3;
+
     background: black;
     position: relative;
     overflow: hidden;
 
-    margin: 40px auto;        /* space between pages */
-    border-radius: 18px;      /* soft card look */
+    margin: 40px auto;
+    border-radius: 18px;
 }
-
 
 /* Portrait-first setup */
 body {
     font-family: 'Georgia', serif;
     background: #111;
-    overflow: hidden;
+
+    overflow-x: hidden;   /* only block sideways scroll */
+    overflow-y: auto;     /* 🔑 allow vertical scroll */
+
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;  /* center cards on desktop */
 }
 
 
@@ -46,9 +49,9 @@ body {
 /* COMMON SCREEN SIZE */
 #intro-image,
 #main-content {
-    display: none;
-    background: black;
-    padding: 0;
+    display: block;   /* 🔑 fallback */
+    background: #fff;
+    padding: 20px;
     text-align: center;
 }
 
@@ -56,25 +59,28 @@ body {
 /* INTRO IMAGE */
 #intro-image {
     position: fixed;
-    top: 0;
+    inset: 0;              /* 🔑 FULL SCREEN */
+    width: 100vw;
+    height: 100vh;
+
     background: black;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     z-index: 10;
     overflow: hidden;
 }
 
 #intro-image img {
-    position: absolute;
-    top: 45%;
-    left: 50%;
+    max-width: 100%;
+    max-height: 100%;
 
-    width: 110%;
-    height: 110%;
-    object-fit: cover;
+    width: auto;
+    height: auto;
 
-    transform: translate(-50%, -50%) scale(0.9);
+    object-fit: contain;
 }
 
 .tap-text {
@@ -408,25 +414,12 @@ body {
     text-decoration: none;
 }
 
-.event-page {
-    width: 100%;
-    height: 100%;
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-}
-
 .tap-venue {
     width: 100%;              /* take full width */
     text-align: center;       /* center text */
 
-    margin: 15px 160px 10px;
+    margin: 15px auto 10px;
+    text-align: center;
 
     font-size: 18px;
     font-weight: 500;
@@ -447,3 +440,29 @@ body {
     }
 }
 
+
+@media (min-width: 768px) {
+    .page-43 {
+        max-width: 600px;   /* bigger on tablets */
+    }
+}
+
+@media (min-width: 1024px) {
+    .page-43 {
+        max-width: 700px;   /* desktop size */
+    }
+}
+
+@media (min-width: 1400px) {
+    .page-43 {
+        max-width: 800px;   /* large screens */
+    }
+}
+
+@media (max-width: 768px) {
+    #intro-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;   /* 🔑 fill mobile screen */
+    }
+}
